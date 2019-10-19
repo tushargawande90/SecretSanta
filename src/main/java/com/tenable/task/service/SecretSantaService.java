@@ -52,16 +52,19 @@ public class SecretSantaService {
 		Random rnd = new Random();
 		final int n = members.size();
 		
+		//Use this for marking secretsanta assignment
 		boolean[] picked = new boolean[n];
 
+		//Iterate through all the elements in input members list
 		for (int i = 0; i < n; i++) {
 			int j;
 			do {
 				j = rnd.nextInt(n);
+				//A breaking condition that needs to rerun the algorithm
 				if (i == n - 1 && j == i) {
 					return assignSecretSantas(members);		//Last element
 				}
-			} while (j == i || picked[j]); // rejection
+			} while (j == i || picked[j]); //j not the right on for assignment, search for new j
 			secretSantas.put(members.get(i), members.get(j));
 			picked[j] = true;
 		}
