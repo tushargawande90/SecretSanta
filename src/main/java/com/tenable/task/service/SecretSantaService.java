@@ -32,7 +32,10 @@ public class SecretSantaService {
 	}
 	
 	public String getMySecretSanta(String name) {
-		return secretSantas.get(name);
+		if(secretSantas.containsKey(name))
+			return secretSantas.get(name);
+		else
+			return "";
 	}
 
 	public Set<String> getFamilyMembers() {

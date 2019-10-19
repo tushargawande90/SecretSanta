@@ -11,6 +11,8 @@ class SecretSantaServiceTest {
 
 	SecretSantaService secretSanta;
 	ArrayList<String> members = new ArrayList<String>();
+	final String BLANK = "";
+	final String TUSHAR = "Tushar";
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -45,11 +47,12 @@ class SecretSantaServiceTest {
 	@Test
 	void testGetMySecretSanta() {
 
-		//Negetive test case. Secret santa received/assigned should be null
-		assertNull(secretSanta.getMySecretSanta("NotInMembersListName"));
+		//Negetive test case. Check if the returned value is empty/blank but not null
+		assertNotNull(secretSanta.getMySecretSanta("NotInMembersListName"));
+		assertEquals(secretSanta.getMySecretSanta("NotInMembersListName"),BLANK);
 		
 		//Positive test case. Secret santa received/assigned is not null
-		assertNotNull(secretSanta.getMySecretSanta("Tushar"));
+		assertNotNull(secretSanta.getMySecretSanta(TUSHAR));
 
 		//Secret santa is not the same member as input name
 		for(int i=0; i<members.size(); i++)

@@ -19,6 +19,8 @@ import com.tenable.task.model.response.SecretSantasResponseModel;
 import com.tenable.task.service.SecretSantaService;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * @author TusharG
@@ -33,7 +35,10 @@ public class SecretSantaController {
 	SecretSantaService secretSantaService;
 
 	@ApiOperation(value = "Input the list of extended family members")
-	@RequestMapping(method = RequestMethod.POST, value = "/extendedfamily")
+	@ApiResponses(value = {
+		    @ApiResponse(code = 200, message = "Family members input sucessfully")
+		})
+	@RequestMapping(method = RequestMethod.POST, value = "/extended-family")
 	public @ResponseBody ExtendedFamilyResponseModel postFamilyMembers(@RequestBody ExtendedFamilyRequestModel req)
 			throws Exception {
 		ExtendedFamilyResponseModel resp = new ExtendedFamilyResponseModel();
@@ -56,7 +61,10 @@ public class SecretSantaController {
 	}
 
 	@ApiOperation(value = "View the extended family member list")
-	@RequestMapping(method = RequestMethod.GET, value = "/extendedfamily")
+	@ApiResponses(value = {
+		    @ApiResponse(code = 200, message = "Family members returned sucessfully")
+		})
+	@RequestMapping(method = RequestMethod.GET, value = "/extended-family")
 	public @ResponseBody ExtendedFamilyResponseModel getFamilyMembers() throws Exception {
 		log.info("Inside getFamilyMembers() ");
 		ExtendedFamilyResponseModel resp = new ExtendedFamilyResponseModel();
@@ -70,7 +78,10 @@ public class SecretSantaController {
 	}
 
 	@ApiOperation(value = "View all the secret santa assignments")
-	@RequestMapping(method = RequestMethod.GET, value = "/secretsanta")
+	@ApiResponses(value = {
+		    @ApiResponse(code = 200, message = "Family members and their assigned secret santas returned sucessfully")
+		})
+	@RequestMapping(method = RequestMethod.GET, value = "/secret-santa")
 	public @ResponseBody SecretSantasResponseModel getSecretSantas() throws Exception {
 		log.info("Inside getSecretSantas() ");
 		SecretSantasResponseModel resp = new SecretSantasResponseModel();
@@ -84,7 +95,10 @@ public class SecretSantaController {
 	}
 
 	@ApiOperation(value = "View the secret santa assigned to input family member")
-	@RequestMapping(method = RequestMethod.GET, value = "/secretsanta/{name}")
+	@ApiResponses(value = {
+		    @ApiResponse(code = 200, message = "Secret santa returned sucessfully")
+		})
+	@RequestMapping(method = RequestMethod.GET, value = "/secret-santa/{name}")
 	public @ResponseBody SecretSantaResponseModel getMySecretSanta(@PathVariable String name) throws Exception {
 		log.info("Inside getMySecretSanta(@PathVariable String name)");
 		SecretSantaResponseModel resp = new SecretSantaResponseModel();
