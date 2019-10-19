@@ -2,5 +2,9 @@ Instructions for Secret Santa Usage:
 
 1. Go to root directory of the project using shell or command prompt
 2. Execute the maven command: mvn package
-3. Execute java-jar SecretSanta.jar
+4. Go to target folder inside the project root directory
+3. Execute >java -jar SecretSanta-0.0.1-SNAPSHOT.jar
 4. Refer http://localhost:8080/swagger-ui.html for further instructions
+
+
+ 
